@@ -19,9 +19,18 @@
    // NSUserDefaults *loginState = [NSUserDefaults standardUserDefaults];
     
     //初始化试图控制器
-    LoginViewController *LoginView = [[LoginViewController alloc]init];
-    UINavigationController *Nav_Login = [[UINavigationController alloc]initWithRootViewController:LoginView];
-    [self.window setRootViewController:Nav_Login];
+//    LoginViewController *LoginView = [[LoginViewController alloc]init];
+//    UINavigationController *Nav_Login = [[UINavigationController alloc]initWithRootViewController:LoginView];
+//    [self.window setRootViewController:Nav_Login];
+    
+    /*
+     测试部分
+     */
+    
+    MainPageViewController *mainPage = [[MainPageViewController alloc]init];
+    UINavigationController *Nav = [[UINavigationController alloc]initWithRootViewController:mainPage];
+    [self.window setRootViewController:Nav   ];
+    
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

@@ -14,7 +14,9 @@
 @end
 
 @implementation LoginViewController
+
 @synthesize mTableView = _mTableView;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -91,12 +93,6 @@
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"欢迎回来" message:[NSString stringWithFormat:@"登陆成功!欢迎你%@",name.text] delegate:self cancelButtonTitle:@"进入主页" otherButtonTitles:nil];
         [alert show];
                
-        //登陆成功后开始解析
-        ASIHTTPRequest *request = [[ASIHTTPRequest alloc]initWithURL:[NSURL URLWithString:LOGIN_URL]];
-
-        NSLog(@"name.text:%@",name.text);
-        request.delegate = self;
-        [request startAsynchronous];
         
         MainPageViewController *mainPageView = [[MainPageViewController alloc]init];
         [self.navigationController pushViewController:mainPageView animated:YES];
@@ -168,16 +164,7 @@
     [textField resignFirstResponder];
 }
 
-//ASI imple
--(void)requestFinished:(ASIHTTPRequest *)request
-{
 
-    NSString *str = request.responseString;
-    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
-    NSArray *arr = [data objectFromJSONData];
-    NSLog(@"arr:%@",request);
-    
-}
 
 
 @end

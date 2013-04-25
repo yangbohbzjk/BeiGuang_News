@@ -15,3 +15,5 @@ MainPageView:主页面
 	button的互斥事件不会写
 	data数据异步图片怎么实现
 			log:2013.4.24
+昨天遗留问题已经解决，明天实现contentpageview就可以了
+			log:2013.4.25

@@ -24,6 +24,7 @@
 
 
 //二层数据源
+@property (nonatomic, strong) NSMutableArray *mArray;
 @property (nonatomic, strong) NSMutableArray *SONS_SONSArray;
 @property (nonatomic, strong) NSMutableArray *SONS_listArr;
 @property (nonatomic, strong) NSMutableArray *SONS_listArray;

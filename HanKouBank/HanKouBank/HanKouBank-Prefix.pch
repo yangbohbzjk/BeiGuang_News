@@ -12,4 +12,8 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import "config.h"
+    #import "ASIHTTPRequest.h"
+    #import "ASIFormDataRequest.h"
+    #import "JSONKit.h"
+    #import "UIImageView+WebCache.h"
 #endif

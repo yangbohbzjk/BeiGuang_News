@@ -10,6 +10,7 @@
 #import "MainCell.h"
 #import "UIImageView+WebCache.h"
 #import "ListPageViewController.h"
+#import "Level.h"
 
 @interface MainPageViewController ()
 
@@ -19,7 +20,7 @@
 
 @synthesize mTableView = _mTableView;
 @synthesize listDict = _listDict;
-
+@synthesize mArray = _mArray;
 @synthesize idArray = _idArray;
 @synthesize textArray = _textArray;
 @synthesize sortArray = _sortArray;
@@ -43,7 +44,7 @@
         self.SONS_listArray = [NSMutableArray arrayWithCapacity:0];
         self.SONS_listArr = [NSMutableArray arrayWithCapacity:0];
         self.SONS_SONSArray = [NSMutableArray arrayWithCapacity:0];
-        
+        self.mArray = [NSMutableArray arrayWithCapacity:0];
         self.SONS_idArray = [NSMutableArray arrayWithCapacity:0];
         self.SONS_textArray = [NSMutableArray arrayWithCapacity:0];
         self.SONS_sortArray = [NSMutableArray arrayWithCapacity:0];
@@ -152,7 +153,9 @@
             //===============假数据测试部分============
             [self.channelIconArray addObjectsFromArray:[NSArray arrayWithObjects:@"hongguan.png",@"hangye.png",@"zhuanti.png",@"shidian.png",@"neixun.png",@"qita.png", nil]];
             //============END========================
-                    
+            
+            Level *level = [[Level alloc]initLevelWithDic:dic];
+            [self.mArray addObject:level];
         }
     
     }else if (request.tag ==201){
@@ -167,7 +170,7 @@
     [self.listDict setObject:self.sortArray forKey:@"sortFlag"];
     [self.listDict setObject:self.SONS_SONSArray forKey:@"SONS_SONSArray"];
 
-    [self sons];
+    
     [self.mTableView reloadData];
 }
 //广告图片链接
@@ -214,13 +217,8 @@
 {
     ListPageViewController *listPageView = [[ListPageViewController alloc]init];
     [listPageView.navigationItem setTitle:[NSString stringWithFormat:@"%@",[[self.listDict objectForKey:@"text"] objectAtIndex:[indexPath row]]]];
+    listPageView.arr = ((Level *)[self.mArray objectAtIndex:[indexPath row]]).sons ;
     [self.navigationController pushViewController:listPageView animated:YES];
 }
 
-//sons json imp
-- (void)sons
-{
-//    NSArray *array = [self.listDict objectForKey:@"SONS_SONSArray"];
-//    NSLog(@"array:%@",array);
-}
 @end

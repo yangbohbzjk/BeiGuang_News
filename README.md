@@ -17,3 +17,5 @@ MainPageView:主页面
 			log:2013.4.24
 昨天遗留问题已经解决，明天实现contentpageview就可以了
 			log:2013.4.25
+今天实现详情页，ScrollView高度自动计算完成，剩下文字排版和数据库保存部分。
+			log:2013.4.26

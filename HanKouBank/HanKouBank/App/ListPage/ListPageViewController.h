@@ -9,7 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "ASIHTTPRequest.h"
 #import "JSONKit.h"
+#import "SomeMethod.h"
+
 @interface ListPageViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ASIHTTPRequestDelegate,UIAlertViewDelegate>
+{
+    id<SomeMethodDelegate>_list_delegate;
+}
+@property (nonatomic, strong) id<SomeMethodDelegate>list_delegate;
 
 @property (nonatomic, strong) UITableView *mTableView;
 //@property (nonatomic, strong) 
@@ -28,4 +34,9 @@
 @property (nonatomic, strong) NSNumber *ButtonTag;
 //list level
 @property (nonatomic, strong) NSMutableArray *listArray;
+//内容页需要分栏的sortFlag值传入
+@property (nonatomic, strong) NSString *LandSortFlag;
+
+- (void) HiddenBackBarWithNewYourBackBar;
+- (void) BackBarPopToSuper;
 @end

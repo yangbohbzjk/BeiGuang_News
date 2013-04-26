@@ -7,7 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SomeMethod.h"
+#import "ListPageViewController.h"
+#import "NSString+DateToChanged.h"
 
-@interface ContentPageViewController : UIViewController
+@interface ContentPageViewController : UIViewController<SomeMethodDelegate,ASIHTTPRequestDelegate>
+{
+    ListPageViewController *_listPageView;
+}
+
+@property (nonatomic, strong) NSMutableArray *contentDataFromListPage;
+
+//当前页文章的docId值
+@property (nonatomic, retain) NSString *Content_docIdStr;
+//二层表格分栏的sortFlag值
+@property (nonatomic, strong) NSString *Content_sortFlagFromList;
+
+@property (nonatomic, strong) NSMutableArray *contentArray;
 
 @end

@@ -12,8 +12,8 @@
 #import "ListCell.h"
 #import "NSString+DateToChanged.h"
 #import "ContentPageViewController.h"
-
 @interface ListPageViewController ()
+
 
 @end
 
@@ -25,6 +25,8 @@
 @synthesize strArray = _strArray;
 @synthesize button_url = _button_url;
 @synthesize ButtonTag = _ButtonTag;
+@synthesize LandSortFlag = _LandSortFlag;
+@synthesize list_delegate = _list_delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,10 +51,13 @@
     //Nav Bar bgimage
 	[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"banner_background"] forBarMetrics:UIBarMetricsDefault];
     //定制 Nav Bar logo for rightBarButtonItem
-    UIView *logoview = [[UIView alloc]initWithFrame:CGRectMake(270, 15, 48, 33)];
+    UIView *logoview = [[UIView alloc]initWithFrame:CGRectMake(310, 10, 35, 30)];
     [logoview setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"logo.png"]]];    
     UIBarButtonItem *rightLogo = [[UIBarButtonItem alloc]initWithCustomView:logoview];
     [self.navigationItem setRightBarButtonItem:rightLogo];
+    //hidden backBarButton and new a button for leftBar
+    [self HiddenBackBarWithNewYourBackBar];
+    
     
 //    UIView *Bar = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 35)];
 //    [Bar setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"main_subscribe_bg.png"]]];
@@ -150,6 +155,10 @@
 {
     ContentPageViewController *contentPageView = [[ContentPageViewController alloc]init];
     [contentPageView setTitle:[NSString stringWithFormat:@"%@",((UIButton *)[self.view viewWithTag:[self.ButtonTag intValue]]).titleLabel.text]];
+    contentPageView.contentDataFromListPage = self.listArray;
+    //当前选中cell文章的docId参数传递给内容页
+    contentPageView.Content_docIdStr = [NSString stringWithFormat:@"%@",((List_Level *)[self.listArray objectAtIndex:[indexPath row]]).docId];
+    contentPageView.Content_sortFlagFromList = [NSString stringWithString:self.LandSortFlag];
     [self.navigationController pushViewController:contentPageView animated:YES];
 }
 
@@ -165,6 +174,7 @@
     }
     //pn理解为sortFlag,ps是每页的内容条数
     self.button_url = [NSString stringWithFormat:@"%@",[NSString stringWithFormat:@"%@%@?pn=%@&ps=%@",LIST_URL,[self.idArray objectAtIndex:(sender.tag-500)],[self.sortArray objectAtIndex:(sender.tag-500)],LIST_NUM_IMP]];
+    self.LandSortFlag = [NSString stringWithFormat:@"%@",[self.idArray objectAtIndex:(sender.tag-500)]];
     //单击事件发送请求json
     ASIHTTPRequest *request = [[ASIHTTPRequest alloc]initWithURL:[NSURL URLWithString:self.button_url]];
     [request setTag:210];
@@ -204,5 +214,22 @@
 -(void)alertViewCancel:(UIAlertView *)alertView
 {
     [self Button:(UIButton *)[self.view viewWithTag:500]];
+}
+- (void) HiddenBackBarWithNewYourBackBar
+{
+    [self.navigationItem setHidesBackButton:YES];
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton setFrame:CGRectMake(15, 3, 20, 20)];
+    [backButton addTarget:self action:@selector(BackBarPopToSuper) forControlEvents:UIControlEventTouchUpInside];
+    [backButton setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    UIBarButtonItem *backBar = [[UIBarButtonItem alloc]initWithCustomView:backButton];
+    [self.navigationItem setLeftBarButtonItem:backBar];
+    NSLog(@"hidden back success");
+}
+//backBar popToSuper imple
+- (void) BackBarPopToSuper
+{
+    NSLog(@"pop success");
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

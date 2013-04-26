@@ -63,7 +63,16 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     //nav Bar backgroundImage
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"main_banner.9.png"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"banner_background.png"] forBarMetrics:UIBarMetricsDefault];
+    //nav Bar titleView
+    UIView *titleview = [[UIView alloc]initWithFrame:CGRectMake(100, 2,197,30 )];
+    [titleview setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"main_banner_text"]]];
+    [self.navigationItem setTitleView:titleview];
+    //right Bar from logo
+    UIView *rightView = [[UIView alloc]initWithFrame:CGRectMake(310, 10, 35, 30)];
+    [rightView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"logo"]]];
+    UIBarButtonItem *rightBar = [[UIBarButtonItem alloc]initWithCustomView:rightView];
+    [self.navigationItem setRightBarButtonItem:rightBar];
 }
 
 - (void)viewDidLoad
@@ -168,7 +177,6 @@
     [self.listDict setObject:self.channelIconArray forKey:@"channelIcon"];
     [self.listDict setObject:self.channelTypeArray forKey:@"channelType"];
     [self.listDict setObject:self.sortArray forKey:@"sortFlag"];
-    [self.listDict setObject:self.SONS_SONSArray forKey:@"SONS_SONSArray"];
 
     
     [self.mTableView reloadData];

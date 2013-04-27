@@ -224,12 +224,11 @@
     [backButton setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
     UIBarButtonItem *backBar = [[UIBarButtonItem alloc]initWithCustomView:backButton];
     [self.navigationItem setLeftBarButtonItem:backBar];
-    NSLog(@"hidden back success");
+    
 }
 //backBar popToSuper imple
 - (void) BackBarPopToSuper
 {
-    NSLog(@"pop success");
     [self.navigationController popViewControllerAnimated:YES];
 }
 @end

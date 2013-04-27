@@ -101,7 +101,7 @@
     
     //edit button
     UIButton *editButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [editButton setFrame:CGRectMake(120, 3, 70, 30)];
+    [editButton setFrame:CGRectMake(120, 5, 70, 27)];
     [editButton setImage:[UIImage imageNamed:@"mysubscribe_button_bg.png"] forState:UIControlStateNormal];
     [editButton setImage:[UIImage imageNamed:@"mysubscribe_button_bg_press.png"] forState:UIControlStateHighlighted];
     [editButton setBackgroundColor:[UIColor clearColor]];
@@ -117,7 +117,7 @@
     
     [yellowBar addSubview:editButton];
     
-    //mTableView
+    //mTableView                     self.view.frame.size.height
     self.mTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 160, 320, 460-205) style:UITableViewStylePlain];
     [self.mTableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"tablebg"]]];
     self.mTableView.delegate = self;
@@ -143,7 +143,7 @@
 -(void)requestFinished:(ASIHTTPRequest *)request
 {
     if (request.tag == 200) {
-       // NSLog(@"request:%@",request.responseString);
+        NSLog(@"request:%@",request.responseString);
         //json
         NSDictionary *arr = [[request.responseString dataUsingEncoding:NSUTF8StringEncoding] objectFromJSONData];
       //  NSLog(@"arr:%@",arr);

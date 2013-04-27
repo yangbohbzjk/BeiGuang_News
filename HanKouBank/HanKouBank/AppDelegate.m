@@ -10,6 +10,8 @@
 #import "LoginViewController.h"
 #import "MainPageViewController.h"
 
+#import "DBLevel.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -29,8 +31,10 @@
     
     MainPageViewController *mainPage = [[MainPageViewController alloc]init];
     UINavigationController *Nav = [[UINavigationController alloc]initWithRootViewController:mainPage];
-    [self.window setRootViewController:Nav   ];
+    [self.window setRootViewController:Nav];
     
+    
+   
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

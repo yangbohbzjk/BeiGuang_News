@@ -10,6 +10,8 @@
 #import "ContentLevel.h"
 #import <QuartzCore/QuartzCore.h>
 
+#import "DBLevel.h"
+
 @interface ContentPageViewController ()
 
 @end
@@ -114,10 +116,11 @@
 
 -(void)requestFinished:(ASIHTTPRequest *)request
 {
+    NSDictionary *dic = [[request.responseString dataUsingEncoding:NSUTF8StringEncoding] objectFromJSONData];
+    ContentLevel *contentLevel = [[ContentLevel alloc]initContentLevelWithDic:dic];
+   // NSLog(@"dic:%@",request.responseString);
     if (request.tag == 220) {
-        NSDictionary *dic = [[request.responseString dataUsingEncoding:NSUTF8StringEncoding] objectFromJSONData];
       //  [self.contentArray removeAllObjects];
-        ContentLevel *contentLevel = [[ContentLevel alloc]initContentLevelWithDic:dic];
         [self.contentArray addObject:contentLevel];
     }
     //button image
@@ -144,7 +147,8 @@
     [C setFrame:CGRectMake(15, 305, contentsize.width, contentsize.height)];
     NSString * str = [[NSString alloc]init];
     str = [str TextFilterHTML:((ContentLevel *)[self.contentArray objectAtIndex:0]).content];
-    NSLog(@"self.contentA:%@",str);
+    NSLog(@"self.contentA:%@",((ContentLevel *)[self.contentArray objectAtIndex:0]).content);
+
     [C setText:[NSString stringWithFormat:@"%@",str]];
     
     CGRect contentFram = C.frame;
@@ -155,7 +159,11 @@
     //MyScroll
     UIScrollView *S = (UIScrollView *)[self.view viewWithTag:604];
     [S setContentSize:CGSizeMake(320, 80+B.frame.size.height+T.frame.size.height+D.frame.size.height+C.frame.size.height)];
-
+    DBLevel *db = [[DBLevel alloc]init];
+    [db CopyDatabase:DBName];
+    for (int i = 0; i<[self.contentArray count]; i++) {
+        [db insertWithContentPage:(ContentLevel *)[self.contentArray objectAtIndex:i]];
+    }
 }
 
 - (void)didReceiveMemoryWarning

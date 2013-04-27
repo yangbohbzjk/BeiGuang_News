@@ -19,3 +19,6 @@
 //测试账号密码
 #define UserName @"hankou"
 #define PassWord @"hankou"
+
+//DataBase
+#define DBName @"xhkb.db"

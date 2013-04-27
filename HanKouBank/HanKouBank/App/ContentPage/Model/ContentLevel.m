@@ -22,6 +22,12 @@
         self.docSource = [dic objectForKey:@"docSource"];
         self.createDate = [dic objectForKey:@"createDate"];
         self.content = [dic objectForKey:@"content"];
+        self.discussNum = [dic objectForKey:@"discussNum"];
+        self.docId = [dic objectForKey:@"docId"];
+        self.path = [dic objectForKey:@"path"];
+        
+        self.channelId = [dic objectForKey:@"channelId"];
+        self.authors = [dic objectForKey:@"authors"];
     }
     
     return self;

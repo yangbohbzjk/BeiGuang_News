@@ -9,9 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "JSONKit.h"
 #import "ASIFormDataRequest.h"
-@interface LoginViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,ASIHTTPRequestDelegate>
-
-@property (nonatomic, strong) UITableView *mTableView;
-
+@interface LoginViewController : UIViewController<UITextFieldDelegate,ASIHTTPRequestDelegate>
 
 @end

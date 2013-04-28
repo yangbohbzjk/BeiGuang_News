@@ -8,8 +8,9 @@
 
 #import "AppDelegate.h"
 #import "LoginViewController.h"
-#import "MainPageViewController.h"
 
+#import "MainPageViewController.h"
+#import "RegisterViewController.h"
 #import "DBLevel.h"
 
 @implementation AppDelegate
@@ -21,18 +22,21 @@
    // NSUserDefaults *loginState = [NSUserDefaults standardUserDefaults];
     
     //初始化试图控制器
-//    LoginViewController *LoginView = [[LoginViewController alloc]init];
-//    UINavigationController *Nav_Login = [[UINavigationController alloc]initWithRootViewController:LoginView];
-//    [self.window setRootViewController:Nav_Login];
+    LoginViewController *LoginView = [[LoginViewController alloc]init];
+    UINavigationController *Nav_Login = [[UINavigationController alloc]initWithRootViewController:LoginView];
+    [self.window setRootViewController:Nav_Login];
     
     /*
      测试部分
      */
     
-    MainPageViewController *mainPage = [[MainPageViewController alloc]init];
-    UINavigationController *Nav = [[UINavigationController alloc]initWithRootViewController:mainPage];
-    [self.window setRootViewController:Nav];
+//    MainPageViewController *mainPage = [[MainPageViewController alloc]init];
+//    UINavigationController *Nav = [[UINavigationController alloc]initWithRootViewController:mainPage];
+//    [self.window setRootViewController:Nav];
     
+//    RegisterViewController *registerView = [[RegisterViewController alloc ]init];
+//    UINavigationController *N = [[UINavigationController alloc]initWithRootViewController:registerView];
+//    [self.window setRootViewController:N];
     
    
     

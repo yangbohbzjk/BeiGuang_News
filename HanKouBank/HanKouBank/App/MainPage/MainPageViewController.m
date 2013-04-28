@@ -40,6 +40,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        [self.navigationItem setHidesBackButton:YES];
         self.listDict = [NSMutableDictionary dictionaryWithCapacity:0];
         self.SONS_listArray = [NSMutableArray arrayWithCapacity:0];
         self.SONS_listArr = [NSMutableArray arrayWithCapacity:0];

@@ -159,11 +159,11 @@
     //MyScroll
     UIScrollView *S = (UIScrollView *)[self.view viewWithTag:604];
     [S setContentSize:CGSizeMake(320, 80+B.frame.size.height+T.frame.size.height+D.frame.size.height+C.frame.size.height)];
-    DBLevel *db = [[DBLevel alloc]init];
-    [db CopyDatabase:DBName];
-    for (int i = 0; i<[self.contentArray count]; i++) {
-        [db insertWithContentPage:(ContentLevel *)[self.contentArray objectAtIndex:i]];
-    }
+//    DBLevel *db = [[DBLevel alloc]init];
+//    [db CopyDatabase:DBName And:@selector(hello)];
+//    for (int i = 0; i<[self.contentArray count]; i++) {
+//        //[db insertWithContentPage:(ContentLevel *)[self.contentArray objectAtIndex:i]];
+//    }
 }
 
 - (void)didReceiveMemoryWarning

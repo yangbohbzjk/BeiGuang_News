@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45014C6C172CC5EA00B2C678 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45014C6B172CC5EA00B2C678 /* RegisterViewController.m */; };
+		45014C72172CF16200B2C678 /* xhkb.db in Resources */ = {isa = PBXBuildFile; fileRef = 45014C71172CF16200B2C678 /* xhkb.db */; };
+		45014C75172D028600B2C678 /* headerBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 45014C73172D028600B2C678 /* headerBackground.png */; };
+		45014C76172D028600B2C678 /* headerBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45014C74172D028600B2C678 /* headerBackground@2x.png */; };
 		4528F1F0172A0AB00032E9EB /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 4528F1ED172A0AB00032E9EB /* back.png */; };
 		4528F1F1172A0AB00032E9EB /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 4528F1EE172A0AB00032E9EB /* chat.png */; };
 		4528F1F2172A0AB00032E9EB /* mainpage_ad.png in Resources */ = {isa = PBXBuildFile; fileRef = 4528F1EF172A0AB00032E9EB /* mainpage_ad.png */; };
@@ -93,7 +97,6 @@
 		459355BB17263FD30058B1A1 /* zhuanti.png in Resources */ = {isa = PBXBuildFile; fileRef = 4593558017263FD30058B1A1 /* zhuanti.png */; };
 		45E49FB5172B68260044FDDA /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E49FB4172B68260044FDDA /* CoreText.framework */; };
 		45E49FC3172B79190044FDDA /* DBLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E49FC2172B79190044FDDA /* DBLevel.m */; };
-		45E49FC5172B79680044FDDA /* xhkb.db in Resources */ = {isa = PBXBuildFile; fileRef = 45E49FC4172B79680044FDDA /* xhkb.db */; };
 		45E49FC7172B79810044FDDA /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45E49FC6172B79810044FDDA /* ListCell.xib */; };
 		45E49FC9172B799C0044FDDA /* tablebg.png in Resources */ = {isa = PBXBuildFile; fileRef = 45E49FC8172B799C0044FDDA /* tablebg.png */; };
 		45EC1B1A17265B200072B5B3 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC1ACC17265B200072B5B3 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -140,6 +143,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		45014C6A172CC5EA00B2C678 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterViewController.h; path = App/Register/RegisterViewController.h; sourceTree = "<group>"; };
+		45014C6B172CC5EA00B2C678 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterViewController.m; path = App/Register/RegisterViewController.m; sourceTree = "<group>"; };
+		45014C71172CF16200B2C678 /* xhkb.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = xhkb.db; sourceTree = "<group>"; };
+		45014C73172D028600B2C678 /* headerBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = headerBackground.png; path = resources/headerBackground.png; sourceTree = "<group>"; };
+		45014C74172D028600B2C678 /* headerBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "headerBackground@2x.png"; path = "resources/headerBackground@2x.png"; sourceTree = "<group>"; };
 		4528F1ED172A0AB00032E9EB /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back.png; path = resources/back.png; sourceTree = "<group>"; };
 		4528F1EE172A0AB00032E9EB /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chat.png; path = resources/chat.png; sourceTree = "<group>"; };
 		4528F1EF172A0AB00032E9EB /* mainpage_ad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mainpage_ad.png; path = resources/mainpage_ad.png; sourceTree = "<group>"; };
@@ -243,7 +251,6 @@
 		45E49FB4172B68260044FDDA /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		45E49FC1172B79190044FDDA /* DBLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBLevel.h; path = DB/Model/DBLevel.h; sourceTree = "<group>"; };
 		45E49FC2172B79190044FDDA /* DBLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBLevel.m; path = DB/Model/DBLevel.m; sourceTree = "<group>"; };
-		45E49FC4172B79680044FDDA /* xhkb.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = xhkb.db; path = DB/xhkb.db; sourceTree = "<group>"; };
 		45E49FC6172B79810044FDDA /* ListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ListCell.xib; path = App/ListPage/Cell/ListCell.xib; sourceTree = "<group>"; };
 		45E49FC8172B799C0044FDDA /* tablebg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tablebg.png; path = resources/tablebg.png; sourceTree = "<group>"; };
 		45EC1ACB17265B200072B5B3 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
@@ -352,6 +359,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45014C69172CC59600B2C678 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				45014C6A172CC5EA00B2C678 /* RegisterViewController.h */,
+				45014C6B172CC5EA00B2C678 /* RegisterViewController.m */,
+			);
+			name = Register;
+			sourceTree = "<group>";
+		};
 		4528F1F9172A0BEB0032E9EB /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
@@ -504,6 +520,7 @@
 		4593552317263CFC0058B1A1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				45014C71172CF16200B2C678 /* xhkb.db */,
 				4593552417263CFC0058B1A1 /* HanKouBank-Info.plist */,
 				4593552517263CFC0058B1A1 /* InfoPlist.strings */,
 				4593552817263CFC0058B1A1 /* main.m */,
@@ -519,6 +536,7 @@
 		4593553917263D1D0058B1A1 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				45014C69172CC59600B2C678 /* Register */,
 				4593553E17263D930058B1A1 /* Login */,
 				4593554217263DC80058B1A1 /* MainPage */,
 				4552A6E91727AC670031DEA0 /* ListPage */,
@@ -639,6 +657,8 @@
 		45CC79A217267CE800D4856A /* new */ = {
 			isa = PBXGroup;
 			children = (
+				45014C73172D028600B2C678 /* headerBackground.png */,
+				45014C74172D028600B2C678 /* headerBackground@2x.png */,
 				45E49FC8172B799C0044FDDA /* tablebg.png */,
 				4528F219172A6E880032E9EB /* jia.png */,
 				4528F1ED172A0AB00032E9EB /* back.png */,
@@ -651,7 +671,6 @@
 		45E49FBD172B78860044FDDA /* DB */ = {
 			isa = PBXGroup;
 			children = (
-				45E49FC4172B79680044FDDA /* xhkb.db */,
 				45E49FC0172B78E80044FDDA /* Model */,
 			);
 			name = DB;
@@ -939,9 +958,11 @@
 				4528F1F1172A0AB00032E9EB /* chat.png in Resources */,
 				4528F1F2172A0AB00032E9EB /* mainpage_ad.png in Resources */,
 				4528F21A172A6E880032E9EB /* jia.png in Resources */,
-				45E49FC5172B79680044FDDA /* xhkb.db in Resources */,
 				45E49FC7172B79810044FDDA /* ListCell.xib in Resources */,
 				45E49FC9172B799C0044FDDA /* tablebg.png in Resources */,
+				45014C72172CF16200B2C678 /* xhkb.db in Resources */,
+				45014C75172D028600B2C678 /* headerBackground.png in Resources */,
+				45014C76172D028600B2C678 /* headerBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -994,6 +1015,7 @@
 				4528F1F8172A0B250032E9EB /* Level.m in Sources */,
 				4528F1FE172A48FF0032E9EB /* ContentLevel.m in Sources */,
 				45E49FC3172B79190044FDDA /* DBLevel.m in Sources */,
+				45014C6C172CC5EA00B2C678 /* RegisterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

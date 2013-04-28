@@ -6,6 +6,12 @@
 //  Copyright (c) 2013年 David. All rights reserved.
 //
 
+//=========注册页面=========
+
+//placeholder 字体大小
+#define FONT_SYS 22
+
+
 //登陆获取主页面内容链接
 #define LOGIN_URL @"http://202.84.17.194/cm/vipapi/tree?id=141"
 //list data url

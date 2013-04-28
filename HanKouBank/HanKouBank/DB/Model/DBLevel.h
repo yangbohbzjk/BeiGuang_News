@@ -10,7 +10,7 @@
 #import "FMDatabase.h"
 #import "ContentLevel.h"
 
-@interface DBLevel : NSObject
+@interface DBLevel : NSObject<UIAlertViewDelegate>
 {
     FMDatabase *_database;
 }
@@ -19,7 +19,14 @@
 
 //复制数据库到沙盒路径并打开数据库
 -(NSString *)CopyDatabase:(NSString *)dbName;
+//关闭数据库
+- (void)CloseDB;
+
 //插入数据
+- (BOOL)insertWithUserInfo:(NSString *)username AndPass:(NSString *)userpass AndEmail:(NSString *)email AndRealname:(NSString *)realname AndUid:(NSNumber *)uid;
 - (void)insertWithContentPage:(ContentLevel *)item;
--(void)insertWithContentPageItemArray:(NSDictionary *)itemArray;
+
+//查询用户名是否重复
+- (BOOL)selectUserFromDB:(NSString *)username;
+
 @end

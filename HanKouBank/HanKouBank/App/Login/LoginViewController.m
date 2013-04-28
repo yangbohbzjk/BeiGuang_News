@@ -8,14 +8,14 @@
 
 #import "LoginViewController.h"
 #import "MainPageViewController.h"
+#import "RegisterViewController.h"
+#import "DBLevel.h"
 
 @interface LoginViewController ()
 
 @end
 
 @implementation LoginViewController
-
-@synthesize mTableView = _mTableView;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -27,43 +27,75 @@
     return self;
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    //nav Bar backgroundImage
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"banner_background.png"] forBarMetrics:UIBarMetricsDefault];
+    //nav Bar titleView
+    UIView *titleview = [[UIView alloc]initWithFrame:CGRectMake(100, 2,197,30 )];
+    [titleview setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"main_banner_text"]]];
+    [self.navigationItem setTitleView:titleview];
+    //right Bar from logo
+    UIView *rightView = [[UIView alloc]initWithFrame:CGRectMake(310, 10, 35, 30)];
+    [rightView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"logo"]]];
+    UIBarButtonItem *rightBar = [[UIBarButtonItem alloc]initWithCustomView:rightView];
+    [self.navigationItem setRightBarButtonItem:rightBar];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     //view backgroundColor
     [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     
-    //nav Bar backgroundImage
-	[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"main_banner.9.png"] forBarMetrics:UIBarMetricsDefault];
-    //mTableView
-    self.mTableView = [[UITableView alloc]initWithFrame:CGRectMake(10, 15, 280, 105) style:UITableViewStyleGrouped];
-    [self.mTableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"tablebg"]]];
-    [self.mTableView setScrollEnabled:NO];
-    self.mTableView.delegate = self;
-    self.mTableView.dataSource = self;
-    [self.view addSubview:self.mTableView];
     
+    //user name
+    UITextField *UserName_textField = [[UITextField alloc]initWithFrame:CGRectMake(20, 25, 280, 40)];
+    [UserName_textField setPlaceholder:@"  用户名"];
+    [UserName_textField setBackground:[UIImage imageNamed:@"login_top.png"]];
+    [UserName_textField setFont:[UIFont systemFontOfSize:24]];
+    [UserName_textField setTextAlignment:NSTextAlignmentLeft];
+    //内容文字居中
+    [UserName_textField setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
+    [UserName_textField setTag:100];
+    [self.view addSubview:UserName_textField];
+    
+    //user pass
+    UITextField *UserPass_textField = [[UITextField alloc]initWithFrame:CGRectMake(20, 65, 280, 40)];
+    [UserPass_textField setPlaceholder:@"  密码"];
+    [UserPass_textField setBackground:[UIImage imageNamed:@"login_buttom.png"]];
+    [UserPass_textField setFont:[UIFont systemFontOfSize:24]];
+    [UserPass_textField setTextAlignment:NSTextAlignmentLeft];
+    //内容文字居中
+    [UserPass_textField setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
+    [UserPass_textField setTag:101];
+    [self.view addSubview:UserPass_textField];
     
     
     //forgot pass button
     UIButton *ForgotPass = [UIButton buttonWithType:UIButtonTypeCustom];
-    [ForgotPass setFrame:CGRectMake(20, 140, 90,  30)];
+    [ForgotPass setFrame:CGRectMake(25, 140, 90,  30)];
     [ForgotPass setTitle:@"忘记密码?" forState:UIControlStateNormal];
+    [ForgotPass setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     [ForgotPass setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [ForgotPass addTarget:self action:@selector(Forgot:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:ForgotPass];
     
     //resgister button
     UIButton *resgisterButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [resgisterButton setFrame:CGRectMake(10, 180, 120, 40)];
+    [resgisterButton setFrame:CGRectMake(20, 180, 112, 40)];
+    [resgisterButton setBackgroundImage:[UIImage imageNamed:@"subscribe_submit_bg.png"] forState:UIControlStateNormal];
+    [resgisterButton setBackgroundImage:[UIImage imageNamed:@"subscribe_submit_bg_press.png"] forState:UIControlStateHighlighted];
     [resgisterButton setTitle:@"注册" forState:UIControlStateNormal];
     [resgisterButton addTarget:self action:@selector(Resgister:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:resgisterButton];
 
     //login button
     UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [loginButton setFrame:CGRectMake(150, 180, 120, 40)];
+    [loginButton setFrame:CGRectMake(180, 180, 112, 40)];
     [loginButton setTitle:@"登陆" forState:UIControlStateNormal];
+    [loginButton setBackgroundImage:[UIImage imageNamed:@"subscribe_submit_bg.png"] forState:UIControlStateNormal];
+    [loginButton setBackgroundImage:[UIImage imageNamed:@"subscribe_submit_bg_press.png"] forState:UIControlStateHighlighted];
     [loginButton addTarget:self action:@selector(Login:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:loginButton];
 }
@@ -76,7 +108,8 @@
 
 - (void)Resgister:(UIButton *)sender
 {
-    NSLog(@"注册");
+    RegisterViewController *registerView = [[RegisterViewController alloc]init];
+    [self.navigationController pushViewController:registerView animated:YES];
 }
 
 - (void)Login:(UIButton *)sender
@@ -109,48 +142,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-//mTableView implement
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *cellName =@"cellname";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];
-    }
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    [cell setBackgroundColor:[UIColor clearColor]];
-
-    if (indexPath.row == 0) {
-        
-        UITextField *username = [[UITextField alloc]initWithFrame:CGRectMake(cell.frame.origin.x+11, cell.frame.origin.y+5, cell.frame.size.width-52,cell.frame.size.height-8 )];
-        [username setBackgroundColor:[UIColor clearColor]];
-        [username setPlaceholder:@"    用户名"];
-        [username setTag:100];
-        [username setTextAlignment:NSTextAlignmentLeft];
-        [username setFont:[UIFont systemFontOfSize:24]];
-        [cell addSubview:username];
-    }else if(indexPath.row == 1){
-        UITextField *userpass = [[UITextField alloc]initWithFrame:CGRectMake(cell.frame.origin.x+11, cell.frame.origin.y+5, cell.frame.size.width-52,cell.frame.size.height-8 )];
-        [userpass setBackgroundColor:[UIColor clearColor]];
-        [userpass setPlaceholder:@"    密 码"];
-        [userpass setTag:101];
-        [userpass setTextAlignment:NSTextAlignmentLeft];
-        [userpass setFont:[UIFont systemFontOfSize:24]];
-        [cell addSubview:userpass];
-    }
-  
-    return cell;
-}
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 2;
-}
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {

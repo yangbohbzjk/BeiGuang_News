@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SomeMethod.h"
 #import "ListPageViewController.h"
 #import "NSString+DateToChanged.h"
 
 
-@interface ContentPageViewController : UIViewController<SomeMethodDelegate,ASIHTTPRequestDelegate>
+@interface ContentPageViewController : UIViewController<ASIHTTPRequestDelegate>
 {
     ListPageViewController *_listPageView;
 }

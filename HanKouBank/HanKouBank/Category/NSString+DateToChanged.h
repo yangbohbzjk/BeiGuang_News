@@ -14,5 +14,4 @@
 - (NSString *)DateToChanged:(NSString *)str;
 //Y年M月D日 H：M
 - (NSString *)YearDateToChanged:(NSString *)str;
-- (NSString *)TextFilterHTML:(NSString *)str;
 @end

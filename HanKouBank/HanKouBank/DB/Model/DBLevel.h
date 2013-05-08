@@ -23,10 +23,11 @@
 - (void)CloseDB;
 
 //插入数据
-- (BOOL)insertWithUserInfo:(NSString *)username AndPass:(NSString *)userpass AndEmail:(NSString *)email AndRealname:(NSString *)realname AndUid:(NSNumber *)uid;
+- (void)insertWithUserInfo:(NSString *)username AndPass:(NSString *)userpass AndEmail:(NSString *)email AndRealname:(NSString *)realname AndUid:(NSNumber *)uid;
 - (void)insertWithContentPage:(ContentLevel *)item;
 
 //查询用户名是否重复
 - (BOOL)selectUserFromDB:(NSString *)username;
-
+//登陆查询用户名、密码是否正确
+- (BOOL)selectUserAndPassFromDB:(NSString *)username AndPassText:(NSString *)password;
 @end

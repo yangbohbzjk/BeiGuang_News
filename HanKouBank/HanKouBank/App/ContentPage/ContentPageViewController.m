@@ -103,12 +103,13 @@
     [MyScroll addSubview:line];
     
     //content
-    UILabel *content_label = [[UILabel alloc]init];
-    [content_label setTag:603];
-    [content_label setNumberOfLines:0];
-    [content_label setTextAlignment:NSTextAlignmentCenter];
-    [content_label setBackgroundColor:[UIColor clearColor]];
-    [MyScroll addSubview:content_label];
+    UIWebView *content_webview = [[UIWebView alloc]init];
+    
+    [content_webview setTag:603];
+  //  [content_webview setNumberOfLines:0];
+    //[content_webview setTextAlignment:NSTextAlignmentCenter];
+    [content_webview setBackgroundColor:[UIColor clearColor]];
+    [MyScroll addSubview:content_webview];
     
        
     
@@ -142,15 +143,12 @@
     [D setText:[NSString stringWithFormat:@"%@",date]];
     
     //content_label text
-    UILabel *C = (UILabel *)[self.view viewWithTag:603];
+    UIWebView *C = (UIWebView *)[self.view viewWithTag:603];
     CGSize contentsize = [((ContentLevel *)[self.contentArray objectAtIndex:0]).content sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:CGSizeMake(290, 1000) lineBreakMode:UILineBreakModeCharacterWrap];
     [C setFrame:CGRectMake(15, 305, contentsize.width, contentsize.height)];
-    NSString * str = [[NSString alloc]init];
-    str = [str TextFilterHTML:((ContentLevel *)[self.contentArray objectAtIndex:0]).content];
-    NSLog(@"self.contentA:%@",((ContentLevel *)[self.contentArray objectAtIndex:0]).content);
-
-    [C setText:[NSString stringWithFormat:@"%@",str]];
-    
+    [C.scrollView setShowsVerticalScrollIndicator:NO];
+//    [C.scrollView setScrollEnabled:NO];
+    [C loadHTMLString:((ContentLevel *)[self.contentArray objectAtIndex:0]).content baseURL:nil];
     CGRect contentFram = C.frame;
     contentFram.size.height = contentsize.height;
     C.frame = contentFram;
@@ -159,11 +157,7 @@
     //MyScroll
     UIScrollView *S = (UIScrollView *)[self.view viewWithTag:604];
     [S setContentSize:CGSizeMake(320, 80+B.frame.size.height+T.frame.size.height+D.frame.size.height+C.frame.size.height)];
-//    DBLevel *db = [[DBLevel alloc]init];
-//    [db CopyDatabase:DBName And:@selector(hello)];
-//    for (int i = 0; i<[self.contentArray count]; i++) {
-//        //[db insertWithContentPage:(ContentLevel *)[self.contentArray objectAtIndex:i]];
-//    }
+
 }
 
 - (void)didReceiveMemoryWarning

@@ -9,15 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "ASIHTTPRequest.h"
 #import "JSONKit.h"
-#import "SomeMethod.h"
+#import "PullingRefreshTableView.h"
+@class EGORefreshTableHeaderView;
 
-@interface ListPageViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ASIHTTPRequestDelegate,UIAlertViewDelegate>
-{
-    id<SomeMethodDelegate>_list_delegate;
-}
-@property (nonatomic, strong) id<SomeMethodDelegate>list_delegate;
+@interface ListPageViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ASIHTTPRequestDelegate,UIAlertViewDelegate,PullingRefreshTableViewDelegate>
 
-@property (nonatomic, strong) UITableView *mTableView;
+@property (nonatomic, strong) PullingRefreshTableView *mTableView;
 //@property (nonatomic, strong) 
 @property (nonatomic, strong)NSMutableDictionary *listDict;
 

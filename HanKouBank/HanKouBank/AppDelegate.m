@@ -19,20 +19,26 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     //判断用户是否登陆
-   // NSUserDefaults *loginState = [NSUserDefaults standardUserDefaults];
-    
+    NSUserDefaults *loginState = [NSUserDefaults standardUserDefaults];
+    [loginState setObject:@"" forKey:@"login"];
     //初始化试图控制器
-    LoginViewController *LoginView = [[LoginViewController alloc]init];
-    UINavigationController *Nav_Login = [[UINavigationController alloc]initWithRootViewController:LoginView];
-    [self.window setRootViewController:Nav_Login];
-    
+//        if ([loginState objectForKey:@"login"]) {
+            LoginViewController *LoginView = [[LoginViewController alloc]init];
+            UINavigationController *Nav_Login = [[UINavigationController alloc]initWithRootViewController:LoginView];
+            [self.window setRootViewController:Nav_Login];
+
+//        }else{
+//            [loginState setObject:@"login" forKey:@"login"];
+//            MainPageViewController *mainPage = [[MainPageViewController alloc]init];
+//            UINavigationController *Nav = [[UINavigationController alloc]initWithRootViewController:mainPage];
+//            [self.window setRootViewController:Nav];
+//
+//        }
+
     /*
      测试部分
      */
     
-//    MainPageViewController *mainPage = [[MainPageViewController alloc]init];
-//    UINavigationController *Nav = [[UINavigationController alloc]initWithRootViewController:mainPage];
-//    [self.window setRootViewController:Nav];
     
 //    RegisterViewController *registerView = [[RegisterViewController alloc ]init];
 //    UINavigationController *N = [[UINavigationController alloc]initWithRootViewController:registerView];

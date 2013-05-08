@@ -124,16 +124,22 @@
     else if ([name.text isEqualToString:@"hankou"]&&[pass.text isEqualToString:@"hankou"]){
         //如果账号密码为测试账号，则进入主页面
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"欢迎回来" message:[NSString stringWithFormat:@"登陆成功!欢迎你%@",name.text] delegate:self cancelButtonTitle:@"进入主页" otherButtonTitles:nil];
+        [alert setTag:183];
         [alert show];
                
-        
-        MainPageViewController *mainPageView = [[MainPageViewController alloc]init];
-        [self.navigationController pushViewController:mainPageView animated:YES];
-
-        
     }else{
+        DBLevel *db = [[DBLevel alloc]init];
+        [db CopyDatabase:DBName];
+        BOOL success;
+        success = [db selectUserAndPassFromDB:((UITextField *)[self.view viewWithTag:100]).text AndPassText:((UITextField *)[self.view viewWithTag:101]).text];
+        if (success) {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"欢迎回来" message:[NSString stringWithFormat:@"登陆成功!欢迎你%@",name.text] delegate:self cancelButtonTitle:@"进入主页" otherButtonTitles:nil];
+            [alert setTag:182];
+            [alert show];
+        }else{
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"异常" message:@"账号登陆异常，请重新登陆" delegate:self cancelButtonTitle:@"重试" otherButtonTitles:nil];
         [alert show];
+        }
     }
 }
 - (void)didReceiveMemoryWarning
@@ -155,7 +161,22 @@
     [textField resignFirstResponder];
 }
 
-
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    //查询数据库进入
+    if (alertView.tag == 182) {
+        if (buttonIndex == 0) {
+            MainPageViewController *mainPageView = [[MainPageViewController alloc]init];
+            [self.navigationController pushViewController:mainPageView animated:YES];
+        }
+    }else if (alertView.tag == 183){
+        //测试账号进入
+        if (buttonIndex == 0) {
+            MainPageViewController *mainPageView = [[MainPageViewController alloc]init];
+            [self.navigationController pushViewController:mainPageView animated:YES];
+        }
+    }
+}
 
 
 @end

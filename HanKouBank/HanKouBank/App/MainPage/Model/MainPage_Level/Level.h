@@ -17,4 +17,5 @@
 @property (strong, nonatomic) NSString *channelIcon;
 @property (strong, nonatomic) NSMutableArray *sons;
 - (id)initLevelWithDic:(NSDictionary*)dic;
+- (void)titleFromJson:(NSDictionary *)dic;
 @end

@@ -23,17 +23,4 @@
     return strs;
 }
 
-- (NSString *)TextFilterHTML:(NSString *)str
-{
-    NSString *last = [[NSString alloc]init];
-    for (int i = 0; i<=[str length]; i++) {
-        NSString *blank = [str stringByReplacingOccurrencesOfString:@" " withString:@""];
-        NSString *blank_1 = [blank stringByReplacingOccurrencesOfString:@"&nbsp" withString:@" "];
-        NSString *Return = [blank_1 stringByReplacingOccurrencesOfString:@"<br/> ; ;" withString:@" "];
-        NSString *blank_2 = [Return stringByReplacingOccurrencesOfString:@"<br/>" withString:@"\n"];
-        NSString *blank_3 = [blank_2 stringByReplacingOccurrencesOfString:@"    " withString:@"\n"];
-        last = blank_3;
-    }
-    return last;
-}
 @end

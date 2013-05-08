@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "JSONKit.h"
 #import "ASIFormDataRequest.h"
-@interface LoginViewController : UIViewController<UITextFieldDelegate,ASIHTTPRequestDelegate>
+
+@interface LoginViewController : UIViewController<UITextFieldDelegate,ASIHTTPRequestDelegate,UIAlertViewDelegate>
 
 @end

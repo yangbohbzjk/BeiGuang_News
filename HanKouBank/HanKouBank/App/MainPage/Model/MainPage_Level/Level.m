@@ -19,7 +19,7 @@
         self.text = [dic objectForKey:@"text"];
         self.channelType = [dic objectForKey:@"channelType"];
         self.level = [dic objectForKey:@"level"];
-        self.channelIcon = [dic objectForKey:@"channelTcon"];
+        self.channelIcon = [dic objectForKey:@"channelIcon"];
         
         NSArray *array = [dic objectForKey:@"sons"];
         if (array.count>0) {
@@ -34,8 +34,19 @@
     return self;
 }
 
+- (void)titleFromJson:(NSDictionary *)dic
+{
+    self.Id = [dic objectForKey:@"id"];
+    self.sortFlag = [dic objectForKey:@"sortFlag"];
+    self.text = [dic objectForKey:@"text"];
+    self.channelType = [dic objectForKey:@"channelType"];
+    self.level = [dic objectForKey:@"level"];
+    self.channelIcon = [dic objectForKey:@"channelIcon"];
+    
+}
+
 - (NSString *)description{
-    return [NSString stringWithFormat:@"%@,%@,%@",self.Id,self.text,self.sons];
+    return [NSString stringWithFormat:@"%@,%@,%@,%@",self.Id,self.text,self.channelIcon,self.sons];
 }
 
 

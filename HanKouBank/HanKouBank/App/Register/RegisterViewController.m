@@ -69,6 +69,8 @@
     [resgisterButton setTitle:@"注册" forState:UIControlStateNormal];
     [resgisterButton addTarget:self action:@selector(Resgister:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:resgisterButton];
+    
+
 
 }
 
@@ -80,19 +82,26 @@
 
 - (void)Resgister:(UIButton *)sender
 {
+    //创建数据库模型对象
     self.db = [[DBLevel alloc]init];
+    //创建数据库模型对象
+    self.db = [[DBLevel alloc]init];
+    //判断有无数据库并复制一份到沙盒
     [self.db CopyDatabase:DBName];
-   BOOL find;
-  find = [self.db insertWithUserInfo:((UITextField *)[self.view viewWithTag:150+0]).text AndPass:((UITextField *)[self.view viewWithTag:150+1]).text AndEmail:((UITextField *)[self.view viewWithTag:150+2]).text AndRealname:((UITextField *)[self.view viewWithTag:150+3]).text AndUid:[NSNumber numberWithInteger:[[NSString stringWithFormat:@"%@",((UITextField *)[self.view viewWithTag:150+4]).text] intValue]]];
-    
+   BOOL find = [self.db selectUserFromDB:((UITextField *)[self.view viewWithTag:150+0]).text];
     if (find) {
-        NSLog(@"1");
+        //查询到用户名
+        UIAlertView *findAlert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"用户已存在！请更换用户名" delegate:self cancelButtonTitle:@"好的" otherButtonTitles:nil];
+        [findAlert setTag:181];
+        [findAlert show];
     }else{
-        NSLog(@"0");
+        [self.db insertWithUserInfo:((UITextField *)[self.view viewWithTag:150+0]).text AndPass:((UITextField *)[self.view viewWithTag:150+1]).text AndEmail:((UITextField *)[self.view viewWithTag:150+2]).text AndRealname:((UITextField *)[self.view viewWithTag:150+3]).text AndUid:[NSNumber numberWithInteger:[[NSString stringWithFormat:@"%@",((UITextField *)[self.view viewWithTag:150+4]).text] intValue]]];
+       
+            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"提示" message:[NSString stringWithFormat:@"申请账户成功，欢迎%@回来",((UITextField *)[self.view viewWithTag:150+0]).text] delegate:self cancelButtonTitle:@"马上登陆" otherButtonTitles: nil];
+            [alert setTag:180];
+            [alert show];
     }
-//    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"提示" message:[NSString stringWithFormat:@"申请账户成功，欢迎%@回来",((UITextField *)[self.view viewWithTag:150+0]).text] delegate:self cancelButtonTitle:@"马上登陆" otherButtonTitles: nil];
-//    [alert setTag:180];
-//    [alert show];
+    //关闭数据库
     [self.db CloseDB];
    
 }
@@ -111,9 +120,14 @@
 {
     if (alertView.tag == 180) {
         if (buttonIndex == 0) {
+             [self.db insertWithUserInfo:((UITextField *)[self.view viewWithTag:150+0]).text AndPass:((UITextField *)[self.view viewWithTag:150+1]).text AndEmail:((UITextField *)[self.view viewWithTag:150+2]).text AndRealname:((UITextField *)[self.view viewWithTag:150+3]).text AndUid:[NSNumber numberWithInteger:[[NSString stringWithFormat:@"%@",((UITextField *)[self.view viewWithTag:150+4]).text] intValue]]];
         [self.navigationController popViewControllerAnimated:YES];
         }
 
+    }else if (alertView.tag == 181){
+        if (buttonIndex == 0) {
+            NSLog(@"用户名存在，重新输入");
+        }
     }
     
 }
